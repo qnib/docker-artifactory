@@ -1,0 +1,23 @@
+consul:
+    image: qnib/alpn-consul
+    hostname: consul
+    container_name: consul
+    dns: 127.0.0.1
+    ports:
+     - 8500:8500
+    environment:
+     - DC_NAME=dc1
+     - CONSUL_BOOTSTRAP=true
+
+artifactory:
+    # default user: admin/password
+    hostname: artifactory
+    container_name: artifactory
+    image: qnib/artifactory
+    dns: 127.0.0.1
+    environment:
+     - DC_NAME=dc1
+    ports:
+     - 8081:8081
+    links:
+     - consul:consul

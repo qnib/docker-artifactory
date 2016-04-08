@@ -1,0 +1,16 @@
+{
+  "services": [
+    {
+      "id": "artifactory",
+      "name": "artifactory",
+      "tags": [ "http" ],
+      "port": 8081,
+      "checks": [
+        {
+          "script": "nmap 127.0.0.1 -PN -p 8081 |grep open",
+          "interval": "5s"
+        }
+      ]
+    }
+  ]
+}
